@@ -1,6 +1,6 @@
 
 import './Footer.css';
-import footer_logo from '../Assets/logo-1.png'
+import footer_logo from '../Assets/logo.png';
 import { LiaInstagram } from "react-icons/lia";
 import { BsFacebook } from "react-icons/bs";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Navbar.css';
-import logo from '../Assets/logo-1.png';
+import logo from '../Assets/logo.png';
 import { FaRegUser } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
