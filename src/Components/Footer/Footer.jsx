@@ -1,6 +1,6 @@
 
 import './Footer.css';
-import footer_logo from '../Assets/logo.png';
+import footer_logo from '../Assets/logo.jpg';
 import { LiaInstagram } from "react-icons/lia";
 import { BsFacebook } from "react-icons/bs";
 
@@ -22,9 +22,9 @@ function Footer () {
         <LiaInstagram size='26px' className='insta-icon'/>
         <BsFacebook size='26px' />       
       </div>  
-        <hr/>
+        
         <div className='copyright'>
-        <p>&copy;&nbsp;&nbsp;{new Date().getFullYear()} &nbsp;SwapNstyle&nbsp;-&nbsp;Claire </p>
+        <p>&copy;&nbsp;&nbsp;{new Date().getFullYear()} &nbsp;SwapNstyle </p>
 
       </div>
 

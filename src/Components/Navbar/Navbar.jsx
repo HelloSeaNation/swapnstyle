@@ -1,31 +1,48 @@
-import React, { useState } from "react";
+import React, { useContext, useState,useRef} from "react";
 import './Navbar.css';
-import logo from '../Assets/logo.png';
-import { FaRegUser } from "react-icons/fa";
+import logo from '../Assets/logo.jpg';
+import { FaRegUser,} from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { ShopContext } from "../../Context/ShopContext";
+import { FiMenu } from "react-icons/fi";
 
 function Navbar () {
 
   const [menu,setMenu] = useState("womens");
+  const {getTotalCartItems} = useContext (ShopContext);
+  const menuRef = useRef();
+  const dropdown_toggle = (e) =>{
+    menuRef.current.classList.toggle('nav-menu-visible');
+  }
+    
 
   return(
     <div className="navbar-box">
     <div className="navbar">
       <div className="nav-logo">
-        <img src={logo} alt="Logo" className="logo-imag" />
+        <Link to='/'><img src={logo} alt="Logo" className="logo-imag" /></Link>
       </div>
-
-      <ul className="nav-menu">
+      
+      <div className="nav-dropdown">
+      <FiMenu className="dropdown-icon" onClick={ dropdown_toggle} />
+      </div>
+  
+      <ul ref={menuRef} className="nav-menu" >   
         <li onClick={()=>{setMenu("mens")}}>Men{menu==="mens"? <hr/> : <></>}</li>
-        <li onClick={()=>{setMenu("womens")}}>Women{menu==="womens"? <hr/> : <></>}</li>
-        <li  onClick={()=>{setMenu("kids")}}>Kids{menu==="kids"? <hr/> : <></>}</li>   
+        <li onClick={()=>{setMenu("womens")}}><Link style={{textDecoration:'none',color:"#716b6b"}} to="/">Women</Link>{menu==="womens"? <hr/> : <></>}</li>
+        <li  onClick={()=>{setMenu("kids")}}>Kids{menu==="kids"? <hr/> : <></>}</li>           
       </ul>
+  
+
 
       <div className="nav-login-cart">
-        <button>Login</button>
-        <FaRegUser size='26px' color='#716b6b' />
-        <AiOutlineShoppingCart size='28px' color='#716b6b' />
-        <div className="nav-cart-count">0</div>     
+        <Link to="/login"><button>Login</button></Link>     
+        <FaRegHeart className="nav-icons"  color='#716b6b'/>
+        <FaRegUser className="nav-icons"  color='#716b6b' />
+       <Link to="/cart"><AiOutlineShoppingCart className="nav-icons"  color='#716b6b' /></Link>
+        <div className="nav-cart-count">{getTotalCartItems()}</div>     
       </div>
     </div>
     </div>
@@ -33,3 +50,6 @@ function Navbar () {
 }
 
 export default Navbar
+
+
+

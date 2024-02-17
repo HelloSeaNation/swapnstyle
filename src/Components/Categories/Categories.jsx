@@ -7,19 +7,35 @@ import bottom from '../Assets/bottom.jpg';
 import jacket from '../Assets/jacket.jpg';
 import accessories from '../Assets/accessories.jpg';
 import shoes from '../Assets/shoes.jpg';
+import { Link } from 'react-router-dom';
 
-const CategoryItem = ({ imageSrc, categoryTitle }) => {
+
+
+
+
+const CategoryItem = ({ imageSrc, categoryTitle, }) => {
   return (
     <div>
-      <img src={imageSrc} alt={categoryTitle} className='items-img'/>
-      <p className='items-name'>{categoryTitle}</p>
+      {categoryTitle === 'Dresses' ? (
+        <Link style={{textDecoration:'none',color:"#716b6b"}} to={`/dresses`} className="category-link">
+          <div>    
+            <img src={imageSrc} alt={categoryTitle} className='items-img'/>      
+            <p className='items-name'>{categoryTitle}</p>
+          </div>
+        </Link>
+      ) : (
+        <div>    
+          <img src={imageSrc} alt={categoryTitle} className='items-img'/>      
+          <p className='items-name'>{categoryTitle}</p>
+        </div>
+      )}
     </div>
   );
 };
 
 function Categories () {
   const categoryData = [
-    { image: dress, title: 'Dresses' },
+    { image: dress, title: 'Dresses'},
     { image: top, title: 'Tops' },
     { image: bottom, title: 'Bottoms' },
     { image: jacket, title: 'Jackets' },
@@ -39,3 +55,6 @@ function Categories () {
 };
 
 export default Categories;
+
+
+

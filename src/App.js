@@ -1,29 +1,72 @@
 
 import './App.css';
+
 import Navbar from './Components/Navbar/Navbar';
-import Searchbar from './Components/Searchbar/Searchbar';
-import Categories from './Components/Categories/Categories';
-import Popular from './Components/Popular/Popular';
-import Footer from './Components/Footer/Footer';
-
-
+import { BrowserRouter, Routes,Route } from 'react-router-dom';
+import Women from './Pages/Women';
+import Login from './Pages/Login';
+import Cart from './Pages/Cart';
+import Dresses from './Pages/Dresses';
+import Product from './Pages/Product';
 
 
 
 function App() {
   return (
-    <div>
-      <Navbar/>
+    <BrowserRouter>    
+      <Navbar/> 
+          
+      <Routes>
+        <Route path="/" element={<Women/>}/>
+        <Route path="/dresses" element={<Dresses/>}/>
+        <Route path="/product" element={<Product/>}>
+          <Route path=':productId' element={<Product/>}/>
+        </Route>  
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/cart" element={<Cart/>}/>
 
-      {/* main */}
-      <Searchbar/>
-      <Categories/>
-      <Popular/>
-      <Footer/>
-
-   
-    </div>
+      </Routes>      
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
